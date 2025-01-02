@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 from myapp.views import index_page
 from myapp.views import time_page
+from myapp.views import calc_page
 
    urlpatterns = [
        path('admin/', admin.site.urls),
@@ -29,4 +30,11 @@ from myapp.views import time_page
        path('admin/', admin.site.urls),
        path('', index_page, name='index'),
        path('time/', time_page, name='time'),
+   ]
+
+   urlpatterns = [
+       path('admin/', admin.site.urls),
+       path('', index_page, name='index'),
+       path('time/', time_page, name='time'),
+       path('calc/', calc_page, name='calc'),
    ]
