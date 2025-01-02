@@ -5,29 +5,22 @@
     <title>Калькулятор</title>
 </head>
 <body>
-    <h1>Курс "Промышленное программирование"</h1>
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Посчитать</button>
-    </form>
-
-    {% if result is not None %}
-        <h2>Результат:</h2>
-        <ul>
-            <li>Первое число: {{ first_number }}</li>
-            <li>Второе число: {{ second_number }}</li>
-            <li>Их сумма равна: {{ total }}</li>
-        </ul>
-    {% endif %}
+     <h1>Курс "Промышленное программирование"</h1>
+       <ul>
+           <li>Первое число: {{ first_number }}</li>
+           <li>Второе число: {{ second_number }}</li>
+           <li>Их сумма равна: {{ total }}</li>
+       </ul>
+       <form method="get" action="{% url 'calc' %}">
+           <input type="text" name="a" placeholder="Введите первое число">
+           <input type="text" name="b" placeholder="Введите второе число">
+           <button type="submit">Посчитать</button>
+       </form>
 
     <nav>
-        <ul>
-            <li><a href="/">Главная</a></li>
-            <li><a href="/time/">Текущее время</a></li>
-            <li><a href="/calc/">Калькулятор</a></li>
-        </ul>
+        <a href="{% url 'index' %}">Главная</a>
+        <a href="{% url 'time' %}">Текущее время</a>
+        <a href="{% url 'calc' %}">Калькулятор</a>
     </nav>
 </body>
 </html>
