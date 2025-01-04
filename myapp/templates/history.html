@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>История выражений</title>
+</head>
+<body>
+    <h1>История вычислений</h1>
+    <table border="1">
+        <tr>
+            <th>Выражение</th>
+            <th>Результат</th>
+        </tr>
+        {% for calculation in calculations %}
+        <tr>
+            <td>{{ calculation.expression }}</td>
+            <td>{{ calculation.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            <li><a href="{% url 'expression' %}">Выражение</a></li>
+            <li><a href="{% url 'history' %}">История выражений</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

@@ -17,24 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from myapp.views import index_page
-from myapp.views import time_page
-from myapp.views import calc_page
+from myapp.views import index_page, time_page, calc_page, home, expression, history
 
 urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('', index_page, name='index'),
-]
-
-urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('', index_page, name='index'),
-   path('time/', time_page, name='time'),
-]
-
-urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('', index_page, name='index'),
-   path('time/', time_page, name='time'),
-   path('calc/', calc_page, name='calc'),
+    path('admin/', admin.site.urls),
+    path('', index_page, name='index'),
+    path('time/', time_page, name='time'),
+    path('calc/', calc_page, name='calc'),
+    path('', home, name='home'),
+    path('expression/', expression, name='expression'),
+    path('history/', history, name='history'),
 ]

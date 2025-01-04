@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import datetime
+import random
+from .models import Calculation
 
 def index_page(request):
     context = {
         'author': 'Иван',
-        'page_count': 3,
+        'page_count': 4,
     }
     return render(request, 'index.html', context)
 
@@ -27,4 +29,32 @@ def calc_page(request):
         'total': total,
     }
     return render(request, 'calc.html', context)
+
+def home(request):
+    return render(request, 'home.html')
+
+def expression(request):
+    num_terms = random.randint(2, 4)  # Количество слагаемых от 2 до 4
+    terms = [random.randint(10, 99) for _ in range(num_terms)]
+    operations = [random.choice(['+', '-']) for _ in range(num_terms - 1)]
+
+    expression_str = str(terms[0])
+    for i in range(num_terms - 1):
+        expression_str += f" {operations[i]} {terms[i + 1]}"
+
+    result = terms[0]
+    for i in range(num_terms - 1):
+        if operations[i] == '+':
+            result += terms[i + 1]
+        else:
+            result -= terms[i + 1]
+
+    Calculation.objects.create(expression=expression_str, result=result)
+    return render(request, 'expression.html', {'expression': expression_str, 'result': result})
+
+def history(request):
+    calculations = Calculation.objects.all()
+    return render(request, 'history.html', {'calculations': calculations})
+
+
 

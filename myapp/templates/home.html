@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <title>Главная страница</title>
 </head>
@@ -10,9 +10,8 @@
     <nav>
         <ul>
             <li><a href="/">Главная</a></li>
-            <li><a href="/time/">Текущее время</a></li>
-            <li><a href="/calc/">Калькулятор</a></li>
             <li><a href="{% url 'expression' %}">Выражение</a></li>
+            <li><a href="{% url 'history' %}">История выражений</a></li>
         </ul>
     </nav>
 </body>

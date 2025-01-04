@@ -10,9 +10,11 @@
     <p>Время: {{ current_time }}</p>
 
     <nav>
-        <a href="{% url 'index' %}">Главная</a>
-        <a href="{% url 'time' %}">Текущее время</a>
-        <a href="{% url 'calc' %}">Калькулятор</a>
-    </nav>
+    <ul>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li><a href="{% url 'time' %}">Текущее время</a></li>
+        <li><a href="{% url 'calc' %}">Калькулятор</a></li>
+    </ul>
+</nav>
 </body>
 </html>
