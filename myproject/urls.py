@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from myapp.views import index_page, time_page, calc_page, home, expression, history
+from myapp.views import index_page, time_page, calc_page, home, expression, history, delete_last_expression
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('', home, name='home'),
     path('expression/', expression, name='expression'),
     path('history/', history, name='history'),
+    path('delete/', delete_last_expression, name='delete_last_expression'),
 ]

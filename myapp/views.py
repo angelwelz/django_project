@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from datetime import datetime
 import random
 from .models import Calculation
+from .models import Expression
 
 def index_page(request):
     context = {
@@ -56,5 +57,6 @@ def history(request):
     calculations = Calculation.objects.all()
     return render(request, 'history.html', {'calculations': calculations})
 
-
-
+def delete_last_expression(request):
+    Expression.objects.last().delete()
+    return render(request, 'delete.html', {'message': 'Удалено последнее выражение из истории'})
