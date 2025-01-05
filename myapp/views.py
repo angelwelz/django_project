@@ -60,3 +60,7 @@ def history(request):
 def delete_last_expression(request):
     Expression.objects.last().delete()
     return render(request, 'delete.html', {'message': 'Удалено последнее выражение из истории'})
+
+def clear_all_expressions(request):
+    Expression.objects.all().delete()
+    return render(request, 'clear.html', {'message': 'История выражений очищена'})
