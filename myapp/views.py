@@ -3,7 +3,6 @@ from datetime import datetime
 import random
 from .models import Calculation
 from .models import Expression
-from django.http import HttpResponseBadRequest
 
 def index_page(request):
     context = {
@@ -62,6 +61,13 @@ def delete_last_expression(request):
     Expression.objects.last().delete()
     return render(request, 'delete.html', {'message': 'Удалено последнее выражение из истории'})
 
+def delete_last_expression(request):
+    last_expression = Expression.objects.last()
+    if last_expression is not None:
+        last_expression.delete()
+    return render(request, 'delete.html', {'message': 'Удалено последнее выражение из истории.'})
+
+
 def clear_all_expressions(request):
     Expression.objects.all().delete()
     return render(request, 'clear.html', {'message': 'История выражений очищена'})
@@ -75,3 +81,4 @@ def add_new_expression(request):
         return render(request, 'new.html', {'message': 'Ваше выражение добавлено'})
     return render(request, 'new.html',
                   {'message': 'Пожалуйста, задайте новое выражение с помощью параметра ?expression=ваше_выражение'})
+

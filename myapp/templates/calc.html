@@ -1,29 +1,40 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Калькулятор</title>
-</head>
-<body>
-     <h1>Курс "Промышленное программирование"</h1>
-       <ul>
-           <li>Первое число: {{ first_number }}</li>
-           <li>Второе число: {{ second_number }}</li>
-           <li>Их сумма равна: {{ total }}</li>
-       </ul>
-       <form method="get" action="{% url 'calc' %}">
-           <input type="text" name="a" placeholder="Введите первое число">
-           <input type="text" name="b" placeholder="Введите второе число">
-           <button type="submit">Посчитать</button>
-       </form>
+   <html lang="ru">
+   <head>
+       <meta charset="UTF-8">
+       <title>Калькулятор</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   </head>
+   <body>
+       <div class="container">
+           <h1 class="text-center">Курс "Промышленное программирование"</h1>
 
-    <nav>
-        <ul>
-            <li><a href="{% url 'index' %}">Главная</a></li>
-            <li><a href="{% url 'time' %}">Текущее время</a></li>
-            <li><a href="{% url 'calc' %}">Калькулятор</a></li>
-            <li><a href="{% url 'expression' %}">Выражение</a></li>
-        </ul>
-    </nav>
-</body>
-</html>
+           {% if first_number is not None and second_number is not None %}
+               <ul class="list-group">
+                   <div class="highlighted-message list-group-item">
+                      <li>Первое число: {{ first_number }}</li>
+                      <li>Второе число: {{ second_number }}</li>
+                      <li>Их сумма равна: {{ total }}</li>
+                   </div>
+               </ul>
+           {% endif %}
+
+           <form method="get" action="{% url 'calc' %}" class="mt-3">
+               <div class="form-group">
+                   <input type="text" name="a" class="form-control" placeholder="Введите первое число" required>
+                   <input type="text" name="b" class="form-control mt-2" placeholder="Введите второе число" required>
+               </div>
+               <button type="submit" class="btn btn-primary">Посчитать</button>
+           </form>
+
+           <nav class="mt-3">
+               <ul class="nav">
+                   <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Главная</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'time' %}">Текущее время</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'calc' %}">Калькулятор</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'expression' %}">Выражение</a></li>
+               </ul>
+           </nav>
+       </div>
+   </body>
+   </html>

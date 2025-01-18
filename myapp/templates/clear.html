@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Очистка истории</title>
-</head>
-<body>
-    <h1>{{ message }}</h1>
-</body>
-</html>
+   <html lang="ru">
+   <head>
+       <meta charset="UTF-8">
+       <title>Очистка истории</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   </head>
+   <body>
+       <div class="container mt-4">
+           <h1 class="text-center">{{ message }}</h1>
+           <nav class="mt-4">
+               <ul class="nav justify-content-center">
+                   <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'expression' %}">Выражение</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">История выражений</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'delete' %}">Удаление последнего выражения</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'clear' %}">Очистка всех выражений</a></li>
+               </ul>
+           </nav>
+       </div>
+   </body>
+   </html>

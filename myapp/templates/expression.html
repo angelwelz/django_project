@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Выражение</title>
-</head>
-<body>
-    <h1>Сгенерированное выражение</h1>
-    <p>{{ expression }} = {{ result }}</p>
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Главная</a></li>
-            <li><a href="{% url 'expression' %}">Выражение</a></li>
-            <li><a href="{% url 'history' %}">История выражений</a></li>
-        </ul>
-    </nav>
-</body>
-</html>
+   <html lang="ru">
+   <head>
+       <meta charset="UTF-8">
+       <title>Выражение</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   </head>
+   <body>
+       <div class="container mt-4">
+           <h1 class="text-center">Сгенерированное выражение</h1>
+           <p class="lead text-center">{{ expression }} = {{ result }}</p>
+
+           <nav class="mt-4">
+               <ul class="nav justify-content-center">
+                   <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Главная</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'expression' %}">Выражение</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">История выражений</a></li>
+               </ul>
+           </nav>
+       </div>
+   </body>
+   </html>

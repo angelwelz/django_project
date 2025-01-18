@@ -27,10 +27,10 @@ urlpatterns = [
     path('', home, name='home'),
     path('expression/', expression, name='expression'),
     path('history/', history, name='history'),
-    path('delete/', delete_last_expression, name='delete_last_expression'),
+    path('delete/', delete_last_expression, name='delete'),
 ]
 
 urlpatterns += [
-    path('clear/', clear_all_expressions, name='clear_all_expressions'),
-    path('new/', add_new_expression, name='add_new_expression'),
+    path('clear/', clear_all_expressions, name='clear'),
+    path('new/', add_new_expression, name='new'),
 ]

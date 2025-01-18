@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <title>Главная страница</title>
-</head>
-<body>
-    <h1>Курс "Промышленное программирование"</h1>
-    <p>Автор сайта: {{ author }}</p>
-    <p>Количество страниц на сайте: {{ page_count }}</p>
-    <nav>
-        <ul>
-            <li><a href="/">Главная</a></li>
-            <li><a href="{% url 'expression' %}">Выражение</a></li>
-            <li><a href="{% url 'history' %}">История выражений</a></li>
-        </ul>
-    </nav>
-</body>
-</html>
+   <html lang="ru">
+   <head>
+       <meta charset="UTF-8">
+       <title>Главная страница</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   </head>
+   <body>
+       <div class="container">
+           <h1 class="text-center mt-4">Курс "Промышленное программирование"</h1>
+           <p class="lead">Автор сайта: {{ author }}</p>
+           <p class="lead">Количество страниц на сайте: {{ page_count }}</p>
+
+           <nav class="mt-4">
+               <ul class="nav">
+                   <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'expression' %}">Выражение</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">История выражений</a></li>
+               </ul>
+           </nav>
+       </div>
+   </body>
+   </html>
