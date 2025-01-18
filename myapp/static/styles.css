@@ -1,9 +1,0 @@
-.highlighted-message {
-    background-color: #e7f3fe; /* Светло-голубой фон */
-    border-left: 5px solid #2196F3; /* Синяя левая граница */
-    color: #0c5460; /* Темно-синий текст */
-    padding: 10px 15px; /* Отступы внутри блока */
-    margin: 20px 0; /* Отступы сверху и снизу */
-    border-radius: 4px; /* Закругленные углы */
-    font-size: 1.1em; /* Увеличенный размер шрифта */
-}

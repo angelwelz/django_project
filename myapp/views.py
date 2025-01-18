@@ -7,8 +7,8 @@ from django.contrib import messages
 
 def index_page(request):
     context = {
-        'author': 'Иван',
-        'page_count': 4,
+        'author': 'Иван Вторыгин',
+        'page_count': 5,
     }
     return render(request, 'index.html', context)
 
@@ -36,7 +36,7 @@ def home(request):
     return render(request, 'home.html')
 
 def expression(request):
-    num_terms = random.randint(2, 4)  # Количество слагаемых от 2 до 4
+    num_terms = random.randint(2, 4)
     terms = [random.randint(10, 99) for _ in range(num_terms)]
     operations = [random.choice(['+', '-']) for _ in range(num_terms - 1)]
 
@@ -77,12 +77,16 @@ def clear_all_expressions(request):
     return redirect('history')
 
 def add_new_expression(request):
+    message = ""
     expression = request.GET.get('expression')
-    if expression:
-        new_expression = Expression(
-            content=expression)
-        new_expression.save()
-        return render(request, 'new.html', {'message': 'Ваше выражение добавлено'})
-    return render(request, 'new.html',
-                  {'message': 'Пожалуйста, задайте новое выражение с помощью параметра ?expression=ваше_выражение'})
-
+    result = request.GET.get('result')
+    if expression and result:
+        try:
+            result = float(result)
+            Calculation.objects.create(expression=expression, result=result)
+            message = "Ваше выражение добавлено."
+        except ValueError:
+            message = "Некорректный формат результата. Пожалуйста, укажите число."
+    else:
+        message = "Чтобы добавить выражение, используйте формат: /new/?expression=<ваше_выражение>&result=<результат>"
+    return render(request, 'new.html', {'message': message})

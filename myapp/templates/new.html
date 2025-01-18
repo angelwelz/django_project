@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-   <html lang="ru">
-   <head>
-       <meta charset="UTF-8">
-       <title>Добавление выражения</title>
-       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   </head>
-   <body>
-       <div class="container mt-4">
-           <h1 class="text-center">{{ message }}</h1>
-       </div>
-   </body>
-   </html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новое выражение</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Добавить новое выражение</h1>
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+        <nav class="mt-4">
+            <ul class="nav justify-content-center">
+                   <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+                   <li class="nav-item"><a class="nav-link" href="/time/">Текущее время</a></li>
+                   <li class="nav-item"><a class="nav-link" href="/calc/">Калькулятор</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'expression' %}">Выражение</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
