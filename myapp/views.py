@@ -3,6 +3,7 @@ from datetime import datetime
 import random
 from .models import Calculation
 from .models import Expression
+from django.contrib import messages
 
 def index_page(request):
     context = {
@@ -58,19 +59,22 @@ def history(request):
     return render(request, 'history.html', {'calculations': calculations})
 
 def delete_last_expression(request):
-    Expression.objects.last().delete()
-    return render(request, 'delete.html', {'message': 'Удалено последнее выражение из истории'})
-
-def delete_last_expression(request):
-    last_expression = Expression.objects.last()
-    if last_expression is not None:
-        last_expression.delete()
-    return render(request, 'delete.html', {'message': 'Удалено последнее выражение из истории.'})
+    last_calculation = Calculation.objects.first()
+    if last_calculation:
+        last_calculation.delete()
+        messages.success(request, "Удалено последнее выражение из истории")
+    else:
+         messages.warning(request, "История вычислений пуста")
+    return redirect('history')
 
 
 def clear_all_expressions(request):
-    Expression.objects.all().delete()
-    return render(request, 'clear.html', {'message': 'История выражений очищена'})
+    if Calculation.objects.exists():
+        Calculation.objects.all().delete()
+        messages.success(request, "История выражений очищена")
+    else:
+        messages.warning(request, "История вычислений пуста")
+    return redirect('history')
 
 def add_new_expression(request):
     expression = request.GET.get('expression')
